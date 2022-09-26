@@ -4,6 +4,7 @@ const React = require('react');
 const classnames = require('classnames');
 const throttle = require('lodash.throttle');
 const Icon = require('@stremio/stremio-icons/dom');
+const { useTranslation } = require('react-i18next');
 const { useRouteFocused } = require('stremio-router');
 const { useServices } = require('stremio/services');
 const { Button, Checkbox, MainNavBars, Multiselect, ColorInput, TextInput, ModalDialog, useProfile, useStreamingServer, useBinaryState, withCoreSuspender } = require('stremio/common');
@@ -16,6 +17,7 @@ const PLAYER_SECTION = 'player';
 const STREAMING_SECTION = 'streaming';
 
 const Settings = () => {
+    const { t } = useTranslation();
     const { core } = useServices();
     const { routeFocused } = useRouteFocused();
     const profile = useProfile();
@@ -133,11 +135,11 @@ const Settings = () => {
         <MainNavBars className={styles['settings-container']} route={'settings'}>
             <div className={classnames(styles['settings-content'], 'animation-fade-in')}>
                 <div className={styles['side-menu-container']}>
-                    <Button className={classnames(styles['side-menu-button'], { [styles['selected']]: selectedSectionId === GENERAL_SECTION })} title={'General'} data-section={GENERAL_SECTION} onClick={sideMenuButtonOnClick}>
-                        General
+                    <Button className={classnames(styles['side-menu-button'], { [styles['selected']]: selectedSectionId === GENERAL_SECTION })} title={t('SETTINGS_NAV_GENERAL')} data-section={GENERAL_SECTION} onClick={sideMenuButtonOnClick}>
+                        { t('SETTINGS_NAV_GENERAL') }
                     </Button>
-                    <Button className={classnames(styles['side-menu-button'], { [styles['selected']]: selectedSectionId === PLAYER_SECTION })} title={'Player'} data-section={PLAYER_SECTION} onClick={sideMenuButtonOnClick}>
-                        Player
+                    <Button className={classnames(styles['side-menu-button'], { [styles['selected']]: selectedSectionId === PLAYER_SECTION })} title={t('SETTINGS_NAV_PLAYER')} data-section={PLAYER_SECTION} onClick={sideMenuButtonOnClick}>
+                        { t('SETTINGS_NAV_PLAYER') }
                     </Button>
                     <Button className={classnames(styles['side-menu-button'], { [styles['selected']]: selectedSectionId === STREAMING_SECTION })} title={'Streaming server'} data-section={STREAMING_SECTION} onClick={sideMenuButtonOnClick}>
                         Streaming server
@@ -153,7 +155,7 @@ const Settings = () => {
                 </div>
                 <div ref={sectionsContainerRef} className={styles['sections-container']} onScroll={sectionsContainerOnScorll}>
                     <div ref={generalSectionRef} className={styles['section-container']}>
-                        <div className={styles['section-title']}>General</div>
+                        <div className={styles['section-title']}>{ t('SETTINGS_NAV_GENERAL') }</div>
                         <div className={classnames(styles['option-container'], styles['user-info-option-container'])}>
                             <div
                                 className={styles['avatar-container']}
@@ -165,29 +167,29 @@ const Settings = () => {
                                 }}
                             />
                             <div className={styles['email-logout-container']}>
-                                <div className={styles['email-label-container']} title={profile.auth === null ? 'Anonymous user' : profile.auth.user.email}>
+                                <div className={styles['email-label-container']} title={profile.auth === null ? t('ANONYMOUS_USER') : profile.auth.user.email}>
                                     <div className={styles['email-label']}>
-                                        {profile.auth === null ? 'Anonymous user' : profile.auth.user.email}
+                                        {profile.auth === null ? t('ANONYMOUS_USER') : profile.auth.user.email}
                                     </div>
                                 </div>
                                 {
                                     profile.auth !== null ?
-                                        <Button className={styles['logout-button-container']} title={'Log out'} href={'#/intro'} onClick={logoutButtonOnClick}>
-                                            <div className={styles['logout-label']}>Log out</div>
+                                        <Button className={styles['logout-button-container']} title={t('LOG_OUT')} href={'#/intro'} onClick={logoutButtonOnClick}>
+                                            <div className={styles['logout-label']}>{ t('LOG_OUT') }</div>
                                         </Button>
                                         :
                                         null
                                 }
                             </div>
-                            <Button className={styles['user-panel-container']} title={'User panel'} target={'_blank'} href={'https://www.stremio.com/acc-settings'}>
-                                <div className={styles['user-panel-label']}>User Panel</div>
+                            <Button className={styles['user-panel-container']} title={t('USER_PANEL')} target={'_blank'} href={'https://www.stremio.com/acc-settings'}>
+                                <div className={styles['user-panel-label']}>{ t('USER_PANEL') }</div>
                             </Button>
                         </div>
                         {
                             profile.auth === null ?
                                 <div className={styles['option-container']}>
                                     <Button className={classnames(styles['option-input-container'], styles['button-container'])} title={'Log in / Sign up'} href={'#/intro'} onClick={logoutButtonOnClick}>
-                                        <div className={styles['label']}>Log in / Sign up</div>
+                                        <div className={styles['label']}>{ t('LOG_IN') } / { t('SIGN_UP') }</div>
                                     </Button>
                                 </div>
                                 :
@@ -199,7 +201,6 @@ const Settings = () => {
                             </div>
                             <Multiselect
                                 className={classnames(styles['option-input-container'], styles['multiselect-container'])}
-                                disabled={true}
                                 tabIndex={-1}
                                 {...interfaceLanguageSelect}
                             />
@@ -208,9 +209,9 @@ const Settings = () => {
                             <div className={styles['option-name-container']}>
                                 <div className={styles['label']}>Trakt Scrobbling</div>
                             </div>
-                            <Button className={classnames(styles['option-input-container'], styles['button-container'])} title={'Authenticate'} disabled={true} tabIndex={-1} onClick={authenticateTraktOnClick}>
+                            <Button className={classnames(styles['option-input-container'], styles['button-container'])} title={t('AUTHENTICATE')} disabled={true} tabIndex={-1} onClick={authenticateTraktOnClick}>
                                 <Icon className={styles['icon']} icon={'ic_trakt'} />
-                                <div className={styles['label']}>Authenticate</div>
+                                <div className={styles['label']}>{ t('AUTHENTICATE') }</div>
                             </Button>
                         </div>
                         <div className={styles['option-container']}>
@@ -224,7 +225,7 @@ const Settings = () => {
                         </div>
                         <div className={styles['option-container']}>
                             <div className={styles['option-name-container']}>
-                                <div className={styles['label']}>Calendar</div>
+                                <div className={styles['label']}>{ t('Calendar') }</div>
                             </div>
                             <Button className={classnames(styles['option-input-container'], styles['button-container'])} title={'Subscribe'} disabled={true} tabIndex={-1} onClick={subscribeCalendarOnClick}>
                                 <Icon className={styles['icon']} icon={'ic_calendar'} />
@@ -232,13 +233,13 @@ const Settings = () => {
                             </Button>
                         </div>
                         <div className={styles['option-container']}>
-                            <Button className={classnames(styles['option-input-container'], styles['link-container'])} title={'Export user data'} disabled={true} tabIndex={-1} onClick={exportDataOnClick}>
-                                <div className={styles['label']}>Export user data</div>
+                            <Button className={classnames(styles['option-input-container'], styles['link-container'])} title={t('SETTINGS_DATA_EXPORT')} disabled={true} tabIndex={-1} onClick={exportDataOnClick}>
+                                <div className={styles['label']}>{ t('SETTINGS_DATA_EXPORT') }</div>
                             </Button>
                         </div>
                         <div className={styles['option-container']}>
-                            <Button className={classnames(styles['option-input-container'], styles['link-container'])} title={'Contact support'} target={'_blank'} href={'https://stremio.zendesk.com/hc/en-us'}>
-                                <div className={styles['label']}>Contact support</div>
+                            <Button className={classnames(styles['option-input-container'], styles['link-container'])} title={t('SETTINGS_SUPPORT')} target={'_blank'} href={'https://stremio.zendesk.com/hc/en-us'}>
+                                <div className={styles['label']}>{ t('SETTINGS_SUPPORT') }</div>
                             </Button>
                         </div>
                         <div className={styles['option-container']}>
@@ -247,18 +248,18 @@ const Settings = () => {
                             </Button>
                         </div>
                         <div className={styles['option-container']}>
-                            <Button className={classnames(styles['option-input-container'], styles['link-container'])} title={'Terms of Service'} target={'_blank'} href={'https://www.stremio.com/tos'}>
-                                <div className={styles['label']}>Terms of Service</div>
+                            <Button className={classnames(styles['option-input-container'], styles['link-container'])} title={t('TERMS_OF_SERVICE')} target={'_blank'} href={'https://www.stremio.com/tos'}>
+                                <div className={styles['label']}>{ t('TERMS_OF_SERVICE') }</div>
                             </Button>
                         </div>
                         <div className={styles['option-container']}>
-                            <Button className={classnames(styles['option-input-container'], styles['link-container'])} title={'Privacy Policy'} target={'_blank'} href={'https://www.stremio.com/privacy'}>
-                                <div className={styles['label']}>Privacy Policy</div>
+                            <Button className={classnames(styles['option-input-container'], styles['link-container'])} title={t('PRIVACY_POLICY')} target={'_blank'} href={'https://www.stremio.com/privacy'}>
+                                <div className={styles['label']}>{ t('PRIVACY_POLICY') }</div>
                             </Button>
                         </div>
                     </div>
                     <div ref={playerSectionRef} className={styles['section-container']}>
-                        <div className={styles['section-title']}>Player</div>
+                        <div className={styles['section-title']}>{ t('SETTINGS_NAV_PLAYER') }</div>
                         <div className={styles['option-container']}>
                             <div className={styles['option-name-container']}>
                                 <div className={styles['label']}>Subtitles language</div>
@@ -315,7 +316,7 @@ const Settings = () => {
                         </div>
                         <div className={styles['option-container']}>
                             <div className={styles['option-name-container']}>
-                                <div className={styles['label']}>Auto-play next episode</div>
+                                <div className={styles['label']}>{ t('SETTINGS_BINGE') }</div>
                             </div>
                             <Checkbox
                                 className={classnames(styles['option-input-container'], styles['checkbox-container'])}
@@ -335,7 +336,7 @@ const Settings = () => {
                         </div>
                         <div className={styles['option-container']}>
                             <div className={styles['option-name-container']}>
-                                <div className={styles['label']}>Play in external player</div>
+                                <div className={styles['label']}>{ t('EXTERNAL_PLAYER_TITLE') }</div>
                             </div>
                             <Checkbox
                                 className={classnames(styles['option-input-container'], styles['checkbox-container'])}
@@ -359,13 +360,13 @@ const Settings = () => {
                     <div ref={streamingServerSectionRef} className={styles['section-container']}>
                         <div className={styles['section-title']}>Streaming Server</div>
                         <div className={styles['option-container']}>
-                            <Button className={classnames(styles['option-input-container'], styles['button-container'])} title={'Reload'} onClick={reloadStreamingServer}>
-                                <div className={styles['label']}>Reload</div>
+                            <Button className={classnames(styles['option-input-container'], styles['button-container'])} title={t('RELOAD')} onClick={reloadStreamingServer}>
+                                <div className={styles['label']}>{ t('RELOAD') }</div>
                             </Button>
                         </div>
                         <div className={styles['option-container']}>
                             <div className={styles['option-name-container']}>
-                                <div className={styles['label']}>Status</div>
+                                <div className={styles['label']}>{ t('STATUS') }</div>
                             </div>
                             <div className={classnames(styles['option-input-container'], styles['info-container'])}>
                                 <div className={styles['label']}>
@@ -413,7 +414,7 @@ const Settings = () => {
                             torrentProfileSelect !== null ?
                                 <div className={styles['option-container']}>
                                     <div className={styles['option-name-container']}>
-                                        <div className={styles['label']}>Torrent profile</div>
+                                        <div className={styles['label']}>{ t('TORRENT_PROFILE') }</div>
                                     </div>
                                     <Multiselect
                                         className={classnames(styles['option-input-container'], styles['multiselect-container'])}

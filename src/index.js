@@ -13,7 +13,30 @@ if (browser?.platform?.type === 'desktop') {
 
 const React = require('react');
 const ReactDOM = require('react-dom/client');
+const i18n = require('i18next');
+const { initReactI18next } = require('react-i18next');
+const translations = require('stremio-translations');
 const App = require('./App');
+
+const resources = Object.fromEntries(Object.entries(translations()).map(([key, strings]) => [
+    key,
+    {
+        translation: {
+            ...strings
+        }
+    }
+]));
+
+i18n
+    .use(initReactI18next)
+    .init({
+        resources,
+        lng: 'en-US',
+        fallbackLng: 'en-US',
+        interpolation: {
+            escapeValue: false
+        }
+    });
 
 const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(<App />);

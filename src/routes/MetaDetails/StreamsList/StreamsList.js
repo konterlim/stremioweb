@@ -3,6 +3,7 @@
 const React = require('react');
 const PropTypes = require('prop-types');
 const classnames = require('classnames');
+const { useTranslation } = require('react-i18next');
 const Icon = require('@stremio/stremio-icons/dom');
 const { Button, Image } = require('stremio/common');
 const { useServices } = require('stremio/services');
@@ -10,6 +11,7 @@ const Stream = require('./Stream');
 const styles = require('./styles');
 
 const StreamsList = ({ className, ...props }) => {
+    const { t } = useTranslation();
     const { core } = useServices();
     const streams = React.useMemo(() => {
         return props.streams
@@ -42,7 +44,7 @@ const StreamsList = ({ className, ...props }) => {
                     props.streams.every((streams) => streams.content.type === 'Err') ?
                         <div className={styles['message-container']}>
                             <Image className={styles['image']} src={require('/images/empty.png')} alt={' '} />
-                            <div className={styles['label']}>No streams were found!</div>
+                            <div className={styles['label']}>{ t('NO_STREAM') }</div>
                         </div>
                         :
                         streams.length === 0 ?
@@ -66,9 +68,9 @@ const StreamsList = ({ className, ...props }) => {
                                 ))}
                             </div>
             }
-            <Button className={styles['install-button-container']} title={'Install Addons'} href={'#/addons'}>
+            <Button className={styles['install-button-container']} title={t('ADDON_CATALOGUE_MORE')} href={'#/addons'}>
                 <Icon className={styles['icon']} icon={'ic_addons'} />
-                <div className={styles['label']}>Install Addons</div>
+                <div className={styles['label']}>{ t('ADDON_CATALOGUE_MORE') }</div>
             </Button>
         </div>
     );

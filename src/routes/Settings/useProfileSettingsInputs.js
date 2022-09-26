@@ -1,18 +1,21 @@
 // Copyright (C) 2017-2022 Smart code 203358507
 
+const { useTranslation } = require('react-i18next');
 const { useServices } = require('stremio/services');
 const { CONSTANTS, languageNames, useDeepEqualMemo } = require('stremio/common');
 
 const useProfileSettingsInputs = (profile) => {
+    const { i18n } = useTranslation();
     const { core } = useServices();
     // TODO combine those useDeepEqualMemo in one
     const interfaceLanguageSelect = useDeepEqualMemo(() => ({
-        options: Object.keys(languageNames).map((code) => ({
+        options: Object.entries(languageNames).map(([name, [code]]) => ({
             value: code,
-            label: languageNames[code]
+            label: name
         })),
         selected: [profile.settings.interfaceLanguage],
         onSelect: (event) => {
+            i18n.changeLanguage(event.value);
             core.transport.dispatch({
                 action: 'Ctx',
                 args: {
