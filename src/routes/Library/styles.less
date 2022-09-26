@@ -1,6 +1,7 @@
 // Copyright (C) 2017-2022 Smart code 203358507
 
 @import (reference) '~@stremio/stremio-colors/less/stremio-colors.less';
+@import (reference) '~stremio/common/colors.less';
 @import (reference) '~stremio/common/screen-sizes.less';
 
 :import('~stremio/common/Multiselect/styles.less') {
@@ -22,7 +23,7 @@
 .library-container {
     width: 100%;
     height: 100%;
-    background-color: @color-background-dark2;
+    background-color: @primary-color;
 
     .library-content {
         width: 100%;
@@ -147,7 +148,7 @@
                         max-height: 4.8em;
                         font-size: 1.2rem;
                         font-weight: 700;
-                        color: @color-surface-light5-90;
+                        color: @primary-font-color;
                         text-align: center;
                     }
                 }

@@ -1,6 +1,7 @@
 // Copyright (C) 2017-2022 Smart code 203358507
 
 @import (reference) '~@stremio/stremio-colors/less/stremio-colors.less';
+@import (reference) '~stremio/common/colors.less';
 @import (reference) '~stremio/common/screen-sizes.less';
 
 :import('~stremio/common/Multiselect/styles.less') {
@@ -65,15 +66,15 @@
         background: none;
 
         &:hover, &:focus, &:global(.active) {
-            background-color: @color-background;
+            background-color: @secondary-color;
         }
 
         &>.multiselect-label {
-            color: @color-surface-light5-90;
+            color: @primary-font-color;
         }
 
         &>.multiselect-icon {
-            fill: @color-surface-light5-90;
+            fill: @primary-font-color;
         }
 
         .multiselect-menu-container {

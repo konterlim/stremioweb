@@ -1,6 +1,7 @@
 // Copyright (C) 2017-2022 Smart code 203358507
 
 @import (reference) '~@stremio/stremio-colors/less/stremio-colors.less';
+@import (reference) '~stremio/common/colors.less';
 
 .search-bar-container {
     --search-bar-size: calc(var(--horizontal-nav-bar-size) - 1.2rem);
@@ -8,10 +9,12 @@
     flex-direction: row;
     height: var(--search-bar-size);
     border-radius: var(--search-bar-size);
-    background-color: @color-background-light2;
+    outline-width: var(--focus-outline-size);
+    background-color: @secondary-color;
 
-    &:hover {
-        background-color: @color-background-light3;
+   &:hover, &:focus-within {
+        outline-color: @accent-color;
+        outline-style: solid;
     }
 
     .search-input {
@@ -22,13 +25,13 @@
         align-items: center;
         padding: 0 0.5rem 0 1.5rem;
         font-weight: 500;
-        color: @color-secondaryvariant1-light1;
+        color: @primary-font-color;
         cursor: text;
 
         &::placeholder, .placeholder-label {
             max-height: 1.2em;
             opacity: 1;
-            color: @color-secondaryvariant1-light1-90;
+            color: @secondary-font-color;
         }
     }
 
@@ -43,7 +46,7 @@
 
         &:hover {
             .icon {
-                fill: @color-secondaryvariant2-light1-90;
+                fill: @primary-font-color;
             }
         }
 
@@ -51,7 +54,7 @@
             flex: none;
             width: 1.7rem;
             height: 1.7rem;
-            fill: @color-secondaryvariant1-90;
+            fill: @secondary-font-color;
         }
     }
 }

@@ -1,6 +1,8 @@
 // Copyright (C) 2017-2022 Smart code 203358507
 
 @import (reference) '~@stremio/stremio-colors/less/stremio-colors.less';
+@import (reference) '~stremio/common/colors.less';
+
 
 html.active-slider-within {
     cursor: grabbing;
@@ -18,7 +20,7 @@ html.active-slider-within {
 
     &:hover, &:global(.active) {
         .track-before {
-            background-color: @color-primary-light5;
+            background-color: @accent-color-light;
         }
     }
 
@@ -54,13 +56,13 @@ html.active-slider-within {
     .track {
         flex: 1;
         height: var(--track-size);
-        background-color: @color-primary-dark3;
+        background-color: @color-surface-light5-20;
     }
 
     .track-before {
         flex: none;
         height: var(--track-size);
-        background-color: @color-primary-light3;
+        background-color: @accent-color;
     }
 
     .thumb {

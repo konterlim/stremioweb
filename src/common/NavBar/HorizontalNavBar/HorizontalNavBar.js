@@ -9,9 +9,10 @@ const Image = require('stremio/common/Image');
 const useFullscreen = require('stremio/common/useFullscreen');
 const SearchBar = require('./SearchBar');
 const NavMenu = require('./NavMenu');
+const NavTabButton = require('./NavTabButton');
 const styles = require('./styles');
 
-const HorizontalNavBar = React.memo(({ className, route, query, title, backButton, searchBar, addonsButton, fullscreenButton, navMenu, ...props }) => {
+const HorizontalNavBar = React.memo(({ className, route, query, title, backButton, selectedTab, tabs, searchBar, addonsButton, fullscreenButton, navMenu, ...props }) => {
     const backButtonOnClick = React.useCallback(() => {
         window.history.back();
     }, []);
@@ -44,6 +45,25 @@ const HorizontalNavBar = React.memo(({ className, route, query, title, backButto
                     :
                     null
             }
+            <nav className={styles['tabs-container']}>
+                {
+                    Array.isArray(tabs) ?
+                        tabs.map((tab, index) => (
+                            <NavTabButton
+                                key={index}
+                                className={styles['nav-tab-button']}
+                                selected={tab.id === selectedTab}
+                                href={tab.href}
+                                logo={tab.logo}
+                                icon={tab.icon}
+                                label={tab.label}
+                                onClick={tab.onClick}
+                            />
+                        ))
+                        :
+                        null
+                }
+            </nav>
             <div className={styles['spacing']} />
             {
                 searchBar ?
@@ -86,10 +106,19 @@ HorizontalNavBar.propTypes = {
     query: PropTypes.string,
     title: PropTypes.string,
     backButton: PropTypes.bool,
+    selectedTab: PropTypes.string,
+    tabs: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string,
+        label: PropTypes.string,
+        logo: PropTypes.string,
+        icon: PropTypes.string,
+        href: PropTypes.string,
+        onClick: PropTypes.func
+    })),
     searchBar: PropTypes.bool,
     addonsButton: PropTypes.bool,
     fullscreenButton: PropTypes.bool,
-    navMenu: PropTypes.bool
+    navMenu: PropTypes.bool,
 };
 
 module.exports = HorizontalNavBar;

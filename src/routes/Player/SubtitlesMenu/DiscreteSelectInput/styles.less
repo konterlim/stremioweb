@@ -1,6 +1,7 @@
 // Copyright (C) 2017-2022 Smart code 203358507
 
 @import (reference) '~@stremio/stremio-colors/less/stremio-colors.less';
+@import (reference) '~stremio/common/colors.less';
 
 .discrete-input-container {
     &:global(.disabled) {
@@ -16,27 +17,44 @@
     .header {
         max-height: 2.4em;
         margin-bottom: 0.5rem;
-        color: @color-surface-light5-90;
+        color: @primary-font-color;
     }
 
     .input-container {
         display: flex;
         flex-direction: row;
         align-items: center;
-        background: @color-background;
+        background: @secondary-color;
 
         .button-container {
             flex: none;
             width: 3rem;
             height: 3rem;
             padding: 1rem;
-            background-color: @color-background-light2;
+            background-color: @secondary-color;
 
             .icon {
                 display: block;
                 width: 100%;
                 height: 100%;
-                fill: @color-surface-light5-90;
+                fill: @primary-font-color;
+            }
+
+            &:hover {
+                outline-color: @accent-color;
+                outline-style: solid;
+            }
+
+            &:active {
+                background-color: @accent-color;
+            }
+
+            &:first-child {
+                border-radius: 0.5em 0 0 0.5em;
+            }
+
+            &:last-child {
+                border-radius:  0 0.5em 0.5em 0 ;
             }
         }
 
@@ -45,7 +63,7 @@
             max-height: 2.4em;
             font-weight: 500;
             text-align: center;
-            color: @color-surface-light5-90;
+            color: @primary-font-color;
         }
     }
 }

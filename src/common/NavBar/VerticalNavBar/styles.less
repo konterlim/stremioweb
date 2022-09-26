@@ -1,11 +1,13 @@
 // Copyright (C) 2017-2022 Smart code 203358507
 
 @import (reference) '~@stremio/stremio-colors/less/stremio-colors.less';
+@import (reference) '~stremio/common/colors.less';
 @import (reference) '~stremio/common/screen-sizes.less';
 
 .vertical-nav-bar-container {
+    display: none;
     width: var(--vertical-nav-bar-size);
-    background-color: @color-background-dark1;
+    background-color: @primary-color;
     overflow-y: auto;
     scrollbar-width: none;
 

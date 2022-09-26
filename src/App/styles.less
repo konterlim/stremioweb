@@ -1,6 +1,7 @@
 // Copyright (C) 2017-2022 Smart code 203358507
 
-@import (inline, once, css) '~stremio/common/roboto.css';
+@import (inline, once, css) '~stremio/common/plus-jakarta-sans.css';
+@import (reference) '~stremio/common/colors.less';
 @import (reference) '~stremio/common/screen-sizes.less';
 @import (reference) '~@stremio/stremio-colors/less/stremio-colors.less';
 
@@ -19,8 +20,8 @@
     --color-facebook: #4267b2;
     --color-twitter: #1DA1F2;
     --color-placeholder: #60606080;
-    --color-placeholder-text: @color-surface-50;
-    --color-placeholder-background: @color-surface-dark5-20;
+    --color-placeholder-text: @secondary-font-color;
+    --color-placeholder-background: @secondary-color;
 }
 
 * {
@@ -41,7 +42,7 @@
     overflow: hidden;
     word-break: break-word;
     scrollbar-width: thin;
-    scrollbar-color: @color-secondaryvariant2-light1 @color-background-dark2;
+    scrollbar-color: @accent-color @primary-color;
 }
 
 ::-webkit-scrollbar {
@@ -50,15 +51,15 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: @color-secondaryvariant2-light1;
+    background-color: @accent-color;
 
     &:hover {
-        background-color: @color-secondaryvariant2-light2;
+        background-color: @accent-color-light;
     }
 }
 
 ::-webkit-scrollbar-track {
-    background-color: @color-background-dark2;
+    background-color: @primary-color;
 }
 
 svg {
@@ -70,7 +71,7 @@ html {
     height: 100%;
     min-width: 640px;
     min-height: 480px;
-    font-family: 'Roboto', 'sans-serif';
+    font-family: 'PlusJakartaSans', 'sans-serif';
     overflow: auto;
 
     body {
@@ -108,7 +109,7 @@ html {
             .loader-container, .error-container {
                 width: 100%;
                 height: 100%;
-                background-color: @color-background-dark2;
+                background-color: @primary-color;
             }
         }
     }

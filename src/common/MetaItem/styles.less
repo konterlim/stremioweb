@@ -1,6 +1,7 @@
 // Copyright (C) 2017-2022 Smart code 203358507
 
 @import (reference) '~@stremio/stremio-colors/less/stremio-colors.less';
+@import (reference) '~stremio/common/colors.less';
 @import (reference) '~stremio/common/screen-sizes.less';
 
 :import('~stremio/common/Popup/styles.less') {
@@ -20,11 +21,12 @@
 
 .meta-item-container {
     padding: 1rem;
+    border-radius: 1em;
     overflow: visible;
 
     &:hover, &:focus, &:global(.active), &:global(.selected) {
         outline-style: none;
-        background-color: @color-background-light3;
+        background-color: @secondary-color;
         transition: background-color 100ms ease-out;
     }
 
@@ -49,7 +51,8 @@
     .poster-container {
         position: relative;
         z-index: 0;
-        background-color: @color-background;
+        border-radius: 1em;
+        background-color: @secondary-color;
 
         .poster-image-layer {
             position: absolute;
@@ -74,17 +77,17 @@
 
             .placeholder-icon {
                 flex: none;
-                width: 80%;
-                height: 50%;
-                fill: @color-background-light3-90;
+                width: 60%;
+                height: 30%;
+                fill: @secondary-color;
             }
         }
 
         .play-icon-layer {
             position: absolute;
-            top: 30%;
+            top: 35%;
             right: 0;
-            bottom: 30%;
+            bottom: 35%;
             left: 0;
             z-index: -2;
             overflow: visible;
@@ -96,11 +99,11 @@
                 filter: drop-shadow(0 0 0.5rem @color-background);
 
                 .play-icon-circle-centered-background {
-                    fill: @color-accent4-90;
+                    fill: @accent-color;
                 }
 
                 .play-icon-circle-centered-icon {
-                    fill: @color-surface-light5-90;
+                    fill: @primary-font-color;
                 }
             }
         }
@@ -111,11 +114,11 @@
             bottom: 0;
             left: 0;
             z-index: -1;
-            background-color: @color-background-light2;
+            background-color: @secondary-color;
 
             .progress-bar {
                 height: 0.4rem;
-                background-color: @color-primaryvariant1;
+                background-color: @accent-color;
             }
         }
     }
@@ -123,15 +126,18 @@
     .title-bar-container {
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: flex-start;
         height: 2.8rem;
+        margin-top: 0.75em;
         overflow: visible;
 
         .title-label {
             flex: 1;
             max-height: 2.4em;
             padding-left: 0.5rem;
-            color: @color-surface-light5-90;
+            font-size: 1em;
+            font-weight: 600;
+            color: @primary-font-color;
 
             &:only-child {
                 padding-right: 0.5rem;
@@ -149,7 +155,7 @@
                 display: block;
                 width: 100%;
                 height: 100%;
-                fill: @color-surface-light1-90;
+                fill: @primary-font-color;
             }
 
             .popup-menu-container {

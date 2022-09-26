@@ -1,6 +1,7 @@
 // Copyright (C) 2017-2022 Smart code 203358507
 
 @import (reference) '~@stremio/stremio-colors/less/stremio-colors.less';
+@import (reference) '~stremio/common/colors.less';
 @import (reference) '~stremio/common/screen-sizes.less';
 
 :import('~stremio/common/Popup/styles.less') {
@@ -12,23 +13,31 @@
     flex-direction: row;
     align-items: center;
     padding: 0 1rem;
-    background-color: @color-background;
+    border-radius: 0.5em;
+    background-color: @secondary-color;
+
+    &:hover {
+        outline-color: @accent-color;
+        outline-style: solid;
+    }
 
     &:global(.active) {
+        border-radius: 0.5em 0.5em 0 0;
+
         .label {
-            color: @color-surface-light5-90;
+            color: @primary-font-color;
         }
 
         .icon {
-            fill: @color-surface-light5-90;
+            fill: @primary-font-color;
         }
     }
 
     >.label {
         flex: 1;
         max-height: 2.4em;
-        font-weight: 500;
-        color: @color-secondaryvariant1-90;
+        font-weight: 700;
+        color: @primary-font-color;
     }
 
     .icon {
@@ -36,7 +45,7 @@
         width: 1rem;
         height: 1rem;
         margin-left: 1rem;
-        fill: @color-secondaryvariant1-90;
+        fill: @primary-font-color;
     }
 
     .popup-menu-container {
@@ -46,12 +55,14 @@
 
 .modal-container, .popup-menu-container {
     .menu-container {
+        border-radius: 0 0 0.5em 0.5em;
+
         .option-container {
             display: flex;
             flex-direction: row;
             align-items: center;
             padding: 1rem;
-            background-color: @color-background;
+            background-color: @primary-color;
 
             &:global(.selected) {
                 .icon {
@@ -60,13 +71,13 @@
             }
 
             &:hover, &:focus {
-                background-color: @color-background-light2;
+                background-color: @secondary-color-opaque;
             }
 
             .label {
                 flex: 1;
                 max-height: 4.8em;
-                color: @color-surface-light5-90;
+                color: @primary-font-color;
             }
 
             .icon {
@@ -76,7 +87,7 @@
                 height: 0.5rem;
                 border-radius: 100%;
                 margin-left: 1rem;
-                background-color: @color-accent3-90;
+                background-color: @accent-color;
             }
         }
 
@@ -95,7 +106,7 @@
                 font-size: 1.2rem;
                 font-weight: 500;
                 text-align: center;
-                color: @color-surface-light5-90;
+                color: @primary-font-color;
             }
         }
     }

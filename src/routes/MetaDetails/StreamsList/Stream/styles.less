@@ -1,6 +1,7 @@
 // Copyright (C) 2017-2022 Smart code 203358507
 
 @import (reference) '~@stremio/stremio-colors/less/stremio-colors.less';
+@import (reference) '~stremio/common/colors.less';
 @import (reference) '~stremio/common/screen-sizes.less';
 
 :import('~stremio/common/PlayIconCircleCentered/styles.less') {
@@ -16,7 +17,7 @@
     padding: 0.5rem 1rem;
 
     &:hover, &:focus {
-        background-color: @color-background;
+        background-color: @secondary-color;
     }
 
     &:hover, &:focus, &:global(.selected) {
@@ -26,7 +27,7 @@
             }
 
             .play-icon-circle-centered-icon {
-                fill: @color-surface-light5-90;
+                fill: @primary-font-color;
             }
         }
     }
@@ -48,7 +49,7 @@
             width: 5rem;
             height: 5rem;
             padding: 0.5rem;
-            fill: @color-secondaryvariant1-light3-90;
+            fill: @primary-font-color;
         }
 
         .addon-name {
@@ -56,7 +57,7 @@
             max-height: 3.6em;
             font-size: 1.1rem;
             text-align: center;
-            color: @color-surface-light5-90;
+            color: @primary-font-color;
         }
     }
 
@@ -65,7 +66,7 @@
         max-height: 3.6em;
         margin: 0.5rem 1rem;
         white-space: pre;
-        color: @color-surface-light5-90;
+        color: @primary-font-color;
     }
 
     .play-icon {
@@ -107,7 +108,7 @@
 
         .play-icon {
             .play-icon-circle-centered-icon {
-                fill: @color-surface-light5-90;
+                fill: @primary-font-color;
             }
         }
     }

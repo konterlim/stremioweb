@@ -5,16 +5,20 @@
 
 .nav-tab-button-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: @primary-color;
+    gap: 0.75em;
+    padding: 0 1.5em;
+    background-color: transparent;
 
     &:hover {
         background-color: @secondary-color;
     }
 
     &:global(.selected) {
+        box-shadow: 0 -2px 0 0 @accent-color inset;
+
         .icon {
             fill: @accent-color;
         }
@@ -26,9 +30,8 @@
 
     .icon, .logo {
         flex: none;
-        width: 1.7rem;
-        height: 1.7rem;
-        margin-bottom: 0.5rem;
+        width: 1.4rem;
+        height: 1.4rem;
         fill: @color-surface-light5-30;
     }
 
@@ -36,7 +39,7 @@
         flex: none;
         max-height: 2.4em;
         padding: 0 0.2rem;
-        font-size: 0.9rem;
+        font-size: 1.1rem;
         font-weight: 700;
         letter-spacing: 0.01rem;
         text-align: center;
