@@ -15,6 +15,7 @@
             align-items: center;
             justify-content: center;
             padding: 1rem;
+            border-radius: 0.5em;
 
             &:not(:last-child) {
                 margin-right: 1rem;
@@ -41,7 +42,7 @@
 
         .facebook-button, .twitter-button {
             &:focus {
-                outline-color: @color-background-dark5;
+                outline-color: @secondary-color;
             }
         }
 
@@ -58,7 +59,8 @@
         display: flex;
         flex-direction: row;
         margin-top: 1rem;
-        background-color: @color-surface-light2;
+        border-radius: 0.5em;
+        background-color: @secondary-color;
 
         .url-text-input {
             flex: 1;
@@ -66,7 +68,7 @@
             padding: 1rem;
             font-size: 1.1rem;
             text-align: center;
-            color: @color-background-dark5;
+            color: @primary-font-color;
         }
 
         .copy-button {
@@ -78,14 +80,17 @@
             justify-content: center;
             width: 8rem;
             padding: 1rem;
-            background-color: @color-accent3;
+            border-radius: 0 0.5em 0.5em 0;
+            outline: var(--focus-outline-size) solid transparent;
+            outline-offset: calc(-1 * var(--focus-outline-size));
+            background-color: @secondary-color;
 
             &:hover {
-                background-color: @color-accent3-light1;
+                outline-color: @accent-color;
             }
 
             &:focus {
-                outline-color: @color-background-dark5;
+                outline-color: @accent-color-light;
             }
 
             .icon {
@@ -93,7 +98,7 @@
                 width: 1.2rem;
                 height: 1.2rem;
                 margin-right: 0.5rem;
-                fill: @primary-font-color;
+                fill: @accent-color;
             }
 
             .label {
@@ -102,7 +107,9 @@
                 flex-basis: auto;
                 max-height: 2.4em;
                 font-size: 1.1rem;
-                color: @primary-font-color;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: @accent-color;
             }
         }
     }

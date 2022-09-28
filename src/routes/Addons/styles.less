@@ -186,22 +186,19 @@
         .notice {
             margin-bottom: 1.5rem;
             font-size: 1rem;
-            color: @color-background-dark5-90;
+            color: @primary-font-color;
         }
 
         .addon-url-input {
             width: 100%;
             padding: 1rem;
-            color: @color-surface-dark5;
-            outline: var(--focus-outline-size) solid @color-surface-light2;
+            color: @primary-font-color;
+            border-radius: 0.5em;
+            outline: var(--focus-outline-size) solid @secondary-color;
             outline-offset: calc(-1 * var(--focus-outline-size));
 
-            &:hover {
-                outline-color: @color-surface-light4;
-            }
-
-            &:focus {
-                outline-color: @color-background-dark5;
+            &:hover, &:focus {
+                outline-color: @accent-color;
             }
         }
     }
@@ -210,15 +207,15 @@
         background-color: transparent;
 
         &:hover {
-            background-color: @color-surface-light3;
+            outline-color: @accent-color;
         }
 
         &:focus {
-            outline-color: @color-background-dark5;
+            outline-color: @secondary-color;
         }
 
         .cancel-button-label {
-            color: @color-surface-dark2;
+            color: @secondary-font-color;
         }
     }
 }
@@ -264,7 +261,7 @@
                     flex-basis: auto;
                     margin-right: 0.5rem;
                     font-size: 1.6rem;
-                    color: @color-background-dark5-90;
+                    color: @primary-font-color;
                 }
 
                 .version {
@@ -272,7 +269,7 @@
                     flex-shrink: 1;
                     flex-basis: auto;
                     margin-top: 0.5rem;
-                    color: @color-background-dark5-60;
+                    color: @secondary-font-color;
                 }
             }
         }

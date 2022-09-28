@@ -1,6 +1,7 @@
 // Copyright (C) 2017-2022 Smart code 203358507
 
 @import (reference) '~@stremio/stremio-colors/less/stremio-colors.less';
+@import (reference) '~stremio/common/colors.less';
 
 :import('~stremio/common/ModalDialog/styles.less') {
     label: label;
@@ -15,13 +16,13 @@
     .install-button, .uninstall-button, .cancel-button {
         .label {
             font-size: 1.2rem;
-            font-weight: 500;
+            font-weight: 700;
         }
     }
 
     .uninstall-button, .cancel-button {
         &:focus {
-            outline-color: @color-background-dark5;
+            outline-color: @secondary-color;
         }
     }
 
@@ -29,19 +30,23 @@
         background-color: transparent;
 
         &:hover {
-            background-color: @color-surface-light3;
+            outline-color: @accent-color;
         }
 
         .label {
-            color: @color-surface-dark2;
+            color: @secondary-font-color;
         }
     }
 
     .uninstall-button {
-        background-color: @color-accent2;
+        background-color: @secondary-color;
 
         &:hover {
-            background-color: @color-accent2-light2;
+            outline-color: @accent-color;
+        }
+
+        .label {
+            color: @secondary-font-color;
         }
     }
 }
