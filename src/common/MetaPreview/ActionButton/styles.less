@@ -9,10 +9,12 @@
     flex-direction: column;
     justify-content: center;
     border-radius: 0.5em;
-    background-color: @color-surface-light5-20;
+    background-color: @secondary-color;
+    backdrop-filter: blur(5px);
+    transition: background-color 0.1s ease-out;
 
     &:hover, &:focus {
-        background-color: @accent-color;
+        background-color: @color-surface-light5-30;
     }
 
     .icon-container {
