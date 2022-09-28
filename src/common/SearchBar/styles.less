@@ -13,9 +13,10 @@
     border: var(--focus-outline-size) solid transparent;
     background-color: @secondary-color;
     cursor: text;
+    transition: box-shadow 0.1s ease-out;
 
     &:hover, &:focus-within {
-        border-color: @accent-color;
+        box-shadow: 0 0 0 var(--focus-outline-size) @accent-color inset;
     }
 
     .search-input {

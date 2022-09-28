@@ -11,10 +11,10 @@
     border-radius: var(--search-bar-size);
     outline-width: var(--focus-outline-size);
     background-color: @secondary-color;
+    transition: box-shadow 0.1s ease-out;
 
-   &:hover, &:focus-within {
-        outline-color: @accent-color;
-        outline-style: solid;
+    &:hover, &:focus-within {
+        box-shadow: 0 0 0 var(--focus-outline-size) @accent-color inset;
     }
 
     .search-input {

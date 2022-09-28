@@ -15,10 +15,10 @@
     padding: 0 1rem;
     border-radius: 0.5em;
     background-color: @secondary-color;
+    transition: box-shadow 0.1s ease-out;
 
     &:hover {
-        outline-color: @accent-color;
-        outline-style: solid;
+        box-shadow: 0 0 0 var(--focus-outline-size) @accent-color inset;
     }
 
     &:global(.active) {

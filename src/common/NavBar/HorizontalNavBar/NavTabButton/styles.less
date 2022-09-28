@@ -11,14 +11,13 @@
     gap: 0.75em;
     padding: 0 1.5em;
     background-color: transparent;
+    transition: background-color 0.1s ease-out;
 
     &:hover {
         background-color: @secondary-color;
     }
 
     &:global(.selected) {
-        box-shadow: 0 -2px 0 0 @accent-color inset;
-
         .icon {
             fill: @accent-color;
         }

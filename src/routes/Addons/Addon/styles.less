@@ -102,6 +102,7 @@
             height: 4rem;
             padding: 0 1rem;
             border-radius: 0.5em;
+            transition: box-shadow 0.1s ease-out;
 
             &:not(:first-child) {
                 margin-top: 1rem;
@@ -142,8 +143,7 @@
             background-color: @secondary-color;
 
             &:hover {
-                outline-color: @accent-color;
-                outline-style: solid;
+                box-shadow: 0 0 0 var(--focus-outline-size) @accent-color inset;
             }
 
             .label {
@@ -156,7 +156,7 @@
             outline-style: solid;
 
             &:hover {
-                outline-color: @accent-color;
+                box-shadow: 0 0 0 var(--focus-outline-size) @accent-color inset;
             }
 
             .label {
