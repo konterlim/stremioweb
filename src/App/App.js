@@ -10,8 +10,10 @@ const CoreEventsToaster = require('./CoreEventsToaster');
 const ErrorDialog = require('./ErrorDialog');
 const routerViewsConfig = require('./routerViewsConfig');
 const styles = require('./styles');
+const { useTranslation } = require('react-i18next');
 
 const App = () => {
+    const { i18n } = useTranslation();
     const onPathNotMatch = React.useCallback(() => {
         return NotFound;
     }, []);
@@ -84,6 +86,13 @@ const App = () => {
     }, []);
     React.useEffect(() => {
         if (services.core.active) {
+            const updateInterfaceLanguage = async () => {
+                const { profile } = await services.core.transport.getState('ctx');
+                if (typeof profile?.settings?.interfaceLanguage === 'string') {
+                    i18n.changeLanguage(profile.settings.interfaceLanguage);
+                }
+            };
+            updateInterfaceLanguage();
             services.core.transport.dispatch({
                 action: 'Ctx',
                 args: {
