@@ -23,11 +23,15 @@
     padding: 1rem;
     border-radius: 1em;
     overflow: visible;
+    transition: all 100ms ease-out;
 
-    &:hover, &:focus, &:global(.active), &:global(.selected) {
+    &:hover, &:global(.active) {
+        background-color: @secondary-color-opaque;
+        transform: scale(1.05);
+    }
+
+    &:focus, &:global(.selected) {
         outline-style: none;
-        background-color: @secondary-color;
-        transition: background-color 100ms ease-out;
     }
 
     &.poster-shape-poster {
@@ -91,6 +95,12 @@
             left: 0;
             z-index: -2;
             overflow: visible;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+
+            &:global(.active) {
+                opacity: 1;
+            }
 
             .play-icon {
                 display: block;

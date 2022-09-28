@@ -86,14 +86,9 @@ const MetaItem = React.memo(({ className, type, name, poster, posterShape, playI
                         renderFallback={renderPosterFallback}
                     />
                 </div>
-                {
-                    playIcon ?
-                        <div className={styles['play-icon-layer']}>
-                            <PlayIconCircleCentered className={styles['play-icon']} />
-                        </div>
-                        :
-                        null
-                }
+                <div className={classnames(styles['play-icon-layer'], { 'active': playIcon })}>
+                    <PlayIconCircleCentered className={styles['play-icon']} />
+                </div>
                 {
                     progress > 0 ?
                         <div className={styles['progress-bar-layer']}>
