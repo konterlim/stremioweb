@@ -1,8 +1,9 @@
 // Copyright (C) 2017-2022 Smart code 203358507
 
 const React = require('react');
+const { useTranslation } = require('react-i18next');
 
-const mapSelectableInputs = (installedAddons, remoteAddons) => {
+const mapSelectableInputs = (installedAddons, remoteAddons, t) => {
     const catalogSelect = {
         title: 'Select catalog',
         options: remoteAddons.selectable.catalogs
@@ -31,10 +32,15 @@ const mapSelectableInputs = (installedAddons, remoteAddons) => {
     const typeSelect = {
         title: 'Select type',
         options: installedAddons.selected !== null ?
-            installedAddons.selectable.types.map(({ type, deepLinks }) => ({
-                value: deepLinks.addons,
-                label: type !== null ? type : 'All'
-            }))
+            installedAddons.selectable.types.map(({ type, deepLinks }) => {
+                const translationKey = `TYPE_${type}`;
+                const translatedType = t(translationKey);
+                const label = type !== null ? translatedType === translationKey ? type : translatedType : 'All';
+                return {
+                    value: deepLinks.addons,
+                    label
+                };
+            })
             :
             remoteAddons.selectable.types.map(({ type, deepLinks }) => ({
                 value: deepLinks.addons,
@@ -68,8 +74,9 @@ const mapSelectableInputs = (installedAddons, remoteAddons) => {
 };
 
 const useSelectableInputs = (installedAddons, remoteAddons) => {
+    const { t } = useTranslation();
     const selectableInputs = React.useMemo(() => {
-        return mapSelectableInputs(installedAddons, remoteAddons);
+        return mapSelectableInputs(installedAddons, remoteAddons, t);
     }, [installedAddons, remoteAddons]);
     return selectableInputs;
 };
