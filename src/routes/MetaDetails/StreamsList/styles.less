@@ -32,7 +32,7 @@
             flex: none;
             font-size: 1.4rem;
             text-align: center;
-            color: @color-secondaryvariant2-light1-90;
+            color: @accent-color;
         }
     }
 
@@ -53,11 +53,11 @@
         margin: 1rem;
         padding: 1.5rem 1rem;
         border-radius: 0.5em;
-        background-color: @secondary-color;
+        background-color: @secondary-color-opaque;
+        transition: box-shadow 0.1s ease-out;
 
         &:hover, &:focus {
-            outline-color: @accent-color;
-            outline-style: solid;
+            box-shadow: 0 0 0 var(--focus-outline-size) @accent-color inset;
         }
 
         &:active {
