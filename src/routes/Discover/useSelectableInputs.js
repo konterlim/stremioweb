@@ -1,15 +1,20 @@
 // Copyright (C) 2017-2022 Smart code 203358507
 
 const React = require('react');
+const { useTranslation } = require('react-i18next');
 
-const mapSelectableInputs = (discover) => {
+const mapSelectableInputs = (discover, t) => {
     const typeSelect = {
         title: 'Select type',
         options: discover.selectable.types
-            .map(({ type, deepLinks }) => ({
-                value: deepLinks.discover,
-                label: type
-            })),
+            .map(({ type, deepLinks }) => {
+                const translationKey = `TYPE_${type}`;
+                const translatedType = t(translationKey);
+                return {
+                    value: deepLinks.discover,
+                    label: translatedType === translationKey ? type : translatedType
+                };
+            }),
         selected: discover.selectable.types
             .filter(({ selected }) => selected)
             .map(({ deepLinks }) => deepLinks.discover),
@@ -47,13 +52,16 @@ const mapSelectableInputs = (discover) => {
     const extraSelects = discover.selectable.extra.map(({ name, isRequired, options }) => ({
         title: `Select ${name}`,
         isRequired: isRequired,
-        options: options.map(({ value, deepLinks }) => ({
-            label: typeof value === 'string' ? value : 'None',
-            value: JSON.stringify({
-                href: deepLinks.discover,
-                value
-            })
-        })),
+        options: options.map(({ value, deepLinks }) => {
+            const translationKey = typeof value === 'string' ? value : 'NONE';
+            return {
+                label: t(translationKey),
+                value: JSON.stringify({
+                    href: deepLinks.discover,
+                    value
+                })
+            };
+        }),
         selected: options
             .filter(({ selected }) => selected)
             .map(({ value, deepLinks }) => JSON.stringify({
@@ -73,8 +81,9 @@ const mapSelectableInputs = (discover) => {
 };
 
 const useSelectableInputs = (discover) => {
+    const { t } = useTranslation();
     const selectableInputs = React.useMemo(() => {
-        return mapSelectableInputs(discover);
+        return mapSelectableInputs(discover, t);
     }, [discover.selected, discover.selectable]);
     return selectableInputs;
 };
